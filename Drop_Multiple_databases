@@ -1,0 +1,13 @@
+To collect multipe database in cpanle from user
+
+For cPanel : mysql -e "show databases like 'username_%'"
+For Plesk  : plesk db -e "show databases like 'username_%'"
+
+To delte multiple databases of mysql fist collect your db name and store udner file /root/db_new.txt then run the command like belows
+
+DB_list_location : /root/db_new.txt
+
+
+For cPanel : for i in `cat /root/db_new.txt`;do mysql -e "drop database $i; done
+For Plesk  : for i in `cat /root/db_new.txt`;do plesk db -e "drop database $i; done
+For Custome_server_mysql [root_password_store in /root/pass.txt]: for i in `cat /root/db_new.txt`;do mysql -u root -p`cat /root/pass.txt` -e "drop database $i; done
